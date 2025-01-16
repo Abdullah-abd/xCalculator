@@ -12,11 +12,14 @@ function App() {
     if (buttonValue === '=') {
       try {
         // Evaluate the expression and update the value
+       if(!(expression=== '' || /[+\-*/]$/.test(expression))){
         const evaluatedResult = eval(expression); // Caution: Use eval carefully
-        // setValue(evaluatedResult.toString());
         setResult(evaluatedResult.toString());
+       }else{
+        setResult("Error")
+       }
       } catch (error) {
-        setValue('Error'); // Handle invalid expressions gracefully
+        setResult("Error")// Handle invalid expressions gracefully
         setExpression('');
       }
     } else if (buttonValue === 'C') {
